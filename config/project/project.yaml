@@ -1,0 +1,23 @@
+dateModified: 1608905361
+email:
+  fromEmail: ranonkeltje@anderwijs.nl
+  fromName: anderwijs.nl
+  transportType: craft\mail\transportadapters\Sendmail
+plugins:
+  craftnavigation:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.4
+system:
+  edition: solo
+  live: true
+  name: anderwijs.nl
+  retryDuration: null
+  schemaVersion: 3.5.13
+  timeZone: Europe/Amsterdam
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

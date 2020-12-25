@@ -1,0 +1,9 @@
+baseUrl: $PRIMARY_SITE_URL
+enabled: true
+handle: default
+hasUrls: true
+language: nl-NL
+name: anderwijs.nl
+primary: true
+siteGroup: 072bf2e4-382e-45a9-a9d4-c3bab0cbef12
+sortOrder: 1
