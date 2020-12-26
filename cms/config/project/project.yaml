@@ -1,17 +1,17 @@
-dateModified: 1608983098
+dateModified: 1608989301
 email:
   fromEmail: ranonkeltje@anderwijs.nl
   fromName: anderwijs.nl
   transportType: craft\mail\transportadapters\Sendmail
 plugins:
-  craftnavigation:
-    edition: standard
-    enabled: true
-    schemaVersion: 1.0.4
   element-api:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
 system:
   edition: solo
   live: true

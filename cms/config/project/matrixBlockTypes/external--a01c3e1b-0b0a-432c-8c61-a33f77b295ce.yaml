@@ -1,0 +1,34 @@
+field: da785aaa-db39-4ab7-aafe-a7b9750be686
+fieldLayouts:
+  646948cf-b4e8-4ced-b869-a70ae6f806b3:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 71e62938-1dce-4a49-a016-1c04820d9a70
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  71e62938-1dce-4a49-a016-1c04820d9a70:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: linkURL
+    instructions: ''
+    name: linkURL
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+handle: external
+name: external
+sortOrder: 2

@@ -1,7 +1,6 @@
 <?php
 
 use craft\elements\Entry;
-use craft\helpers\UrlHelper;
 
 return [
     'endpoints' => [
@@ -9,12 +8,13 @@ return [
 
             return [
                 'elementType' => Entry::class,
-                'criteria' => ['section' => 'pages'],
+                'criteria' => ['section' => 'navigation'],
                 'transformer' => function(Entry $entry) {
                     return [
                         'parent' => null,
                         'title' => $entry->title,
                         'slug' => $entry->slug,
+                        'item' => $entry->item
 
                     ];
                 },
@@ -27,10 +27,21 @@ return [
                 'elementType' => Entry::class,
                 'criteria' => ['section' => 'pages'],
                 'transformer' => function(Entry $entry) {
+                    $content = [];
+                    /** @var \craft\elements\MatrixBlock $item */
+                    foreach($entry->pageContent as $item) {
+                        if (!$item->enabled) {
+                            continue;
+                        }
+                        $content[] = [
+                            'type' => $item->getType()->handle,
+                            'content' => $item->text
+                        ];
+                    }
+
                     return [
                         'title' => $entry->title,
-                        'url' => $entry->url,
-                        'content' => []
+                        'pageContent' => $content
                     ];
                 },
             ];
