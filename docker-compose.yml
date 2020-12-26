@@ -7,15 +7,7 @@ services:
     env_file:
       - ./cms/.env
     volumes:
-      - ./cms/:/app:delegated
-
-  web-cms:
-    image: nginx:stable-alpine
-    volumes:
-      - ./cms/docker/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./cms/:/app:delegated
-    ports:
-    - 8000:80
+      - ./cms/:/www
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.anderwijs-cms.rule=Host(`cms.anderwijs.local`)"

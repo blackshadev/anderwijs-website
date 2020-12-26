@@ -29,4 +29,3 @@ If you get a gateway error or an not found error it means traefik is unable to c
 - You can debug this by checking if the anderwijs_cms_cms and anderwijs_cms_web runs `docker ps` or `docker-compose ps`. 
 - Check if the anderwijs_cms_cms , anderwijs_cms_web and enrise-dev-proxy run in the anderwijs network with `docker network inspect anderwijs`.
 - Check http://localhost:10080/ if it has a rule for the endpoint
-
