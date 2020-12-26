@@ -1,0 +1,2 @@
+127.0.0.1 anderwijs.local
+127.0.0.1 cms.anderwijs.local
