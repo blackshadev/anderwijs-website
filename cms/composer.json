@@ -1,6 +1,7 @@
 {
   "require": {
     "craftcms/cms": "^3.5.10",
+    "craftcms/element-api": "2.6.0",
     "fatfish/navigation": "1.0.8",
     "vlucas/phpdotenv": "^3.4.0"
   },
