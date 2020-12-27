@@ -10,12 +10,17 @@ return [
                 'elementType' => Entry::class,
                 'criteria' => ['section' => 'navigation'],
                 'transformer' => function(Entry $entry) {
+
+                    $item = $entry->item->one();
+                    $type = $item->getType()->handle;
+                    /** @var \Blox\BlockManager\BlockMangerInterface $blockMapper */
+                    $blockMapper = Craft::$container->get('navigation');
+
                     return [
                         'parent' => null,
                         'title' => $entry->title,
                         'slug' => $entry->slug,
-                        'item' => $entry->item
-
+                        'item' => $blockMapper->mapMany($entry->item)
                     ];
                 },
             ];

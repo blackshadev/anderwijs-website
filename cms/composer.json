@@ -10,14 +10,15 @@
     },
     "autoload": {
         "psr-4": {
-            "modules\\": "modules/"
+            "modules\\": "modules/",
+            "Blox\\": "Blox/"
         }
     },
     "config": {
         "sort-packages": true,
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.0"
+            "php": "7.4"
         }
     },
     "scripts": {
