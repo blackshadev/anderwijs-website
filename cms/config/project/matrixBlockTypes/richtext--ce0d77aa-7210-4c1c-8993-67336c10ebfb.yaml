@@ -19,9 +19,9 @@ fields:
   7ee224ba-15ab-483a-b30a-4038cef018f1:
     contentColumnType: text
     fieldGroup: null
-    handle: text
+    handle: body
     instructions: ''
-    name: text
+    name: body
     searchable: true
     settings:
       availableTransforms: '*'
@@ -44,6 +44,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-handle: textblock
-name: textBlock
-sortOrder: 1
+handle: richtext
+name: text
+sortOrder: 2

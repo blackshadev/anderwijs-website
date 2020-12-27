@@ -1,13 +1,13 @@
 contentColumnType: string
 fieldGroup: c45017aa-f34b-4172-999a-befebd813965
-handle: item
+handle: navigationitems
 instructions: ''
-name: item
+name: navigationItems
 searchable: false
 settings:
-  contentTable: '{{%matrixcontent_item}}'
-  maxBlocks: '1'
-  minBlocks: '1'
+  contentTable: '{{%matrixcontent_navigationitems}}'
+  maxBlocks: ''
+  minBlocks: ''
   propagationMethod: all
 translationKeyFormat: null
 translationMethod: site

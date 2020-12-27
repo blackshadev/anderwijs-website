@@ -8,19 +8,17 @@ return [
 
             return [
                 'elementType' => Entry::class,
-                'criteria' => ['section' => 'navigation'],
+                'criteria' => ['section' => 'navigation', 'slug' => 'main'],
                 'transformer' => function(Entry $entry) {
 
-                    $item = $entry->item->one();
-                    $type = $item->getType()->handle;
-                    /** @var \Blox\BlockManager\BlockMangerInterface $blockMapper */
+                    /** @var \Blox\BlockManager\BlockManagerInterface $blockMapper */
                     $blockMapper = Craft::$container->get('navigation');
 
                     return [
                         'parent' => null,
                         'title' => $entry->title,
                         'slug' => $entry->slug,
-                        'item' => $blockMapper->mapMany($entry->item)
+                        'item' => $blockMapper->mapMany($entry->navigationitems)
                     ];
                 },
             ];

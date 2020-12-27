@@ -1,7 +1,7 @@
 <?php
 
 namespace Blox;
-use Blox\BlockManager\BlockMangerInterface;
+use Blox\BlockManager\BlockManagerInterface;
 use Craft;
 
 class Module extends \yii\base\Module
@@ -11,8 +11,6 @@ class Module extends \yii\base\Module
      */
     public function init()
     {
-        // Set a @modules alias pointed to the modules/ directory
-        Craft::setAlias('@Blox', __DIR__);
         $this->registerBundleDirectory(__DIR__ . '/Bundles/');
 
         parent::init();
@@ -40,11 +38,15 @@ class Module extends \yii\base\Module
     private function registerBundle(string $name, string $file)
     {
         $blockManager = require $file;
-        if (!$blockManager instanceof BlockMangerInterface) {
-            throw new \UnexpectedValueException("Expected $file to return a " . BlockMangerInterface::class);
+        if (!$blockManager instanceof BlockManagerInterface) {
+            throw new \UnexpectedValueException("Expected $file to return a " . BlockManagerInterface::class);
         }
 
         Craft::$container->set($name, function ($container, $params, $config) use ($blockManager) {
+            return $blockManager;
+        });
+
+        $this->set($name, function ($container, $params, $config) use ($blockManager) {
             return $blockManager;
         });
     }

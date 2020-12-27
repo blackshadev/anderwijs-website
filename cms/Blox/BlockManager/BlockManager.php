@@ -7,7 +7,7 @@ use Blox\Result\ResultInterface;
 use craft\elements\db\MatrixBlockQuery;
 use craft\elements\MatrixBlock;
 
-class BlockManager implements BlockMangerInterface
+class BlockManager implements BlockManagerInterface
 {
     public static function create(): self {
         return new self();
@@ -41,9 +41,10 @@ class BlockManager implements BlockMangerInterface
         return $blocks;
     }
 
-    public function register(BlockInterface $block): BlockMangerInterface
+    public function register(BlockInterface $block): BlockManagerInterface
     {
         $this->blocks[] = $block;
+        $block->setBlockManager($this);
         return $this;
     }
 }
