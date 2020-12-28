@@ -15,10 +15,8 @@ return [
                     $blockMapper = Craft::$container->get('navigation');
 
                     return [
-                        'parent' => null,
                         'title' => $entry->title,
-                        'slug' => $entry->slug,
-                        'item' => $blockMapper->mapMany($entry->navigationitems)
+                        'item' => $blockMapper->map($entry->navigationitems)
                     ];
                 },
             ];
@@ -29,27 +27,32 @@ return [
             return [
                 'elementType' => Entry::class,
                 'criteria' => ['section' => 'pages'],
+                'paginate' => false,
                 'transformer' => function(Entry $entry) {
-                    $content = [];
-                    /** @var \craft\elements\MatrixBlock $item */
-                    foreach($entry->pageContent as $item) {
-                        if (!$item->enabled) {
-                            continue;
-                        }
-                        $content[] = [
-                            'type' => $item->getType()->handle,
-                            'content' => $item->text
-                        ];
-                    }
-
                     return [
                         'title' => $entry->title,
-                        'pageContent' => $content
+                        'slug' => $entry->slug
                     ];
                 },
             ];
-
         },
+        'pages/<slug>.json' => function($slug) {
+
+            return [
+                'elementType' => Entry::class,
+                'criteria' => ['section' => 'pages', 'slug' => $slug ],
+                'one' => true,
+                'transformer' => function(Entry $entry) {
+                    /** @var \Blox\BlockManager\BlockManagerInterface $blockMapper */
+                    $blockMapper = Craft::$container->get('pageContent');
+
+                    return [
+                        'title' => $entry->title,
+                        'slug' => $entry->slug,
+                        'content' => $blockMapper->map($entry->pageContent)
+                    ];
+                }
+            ];
+        }
     ]
 ];
-

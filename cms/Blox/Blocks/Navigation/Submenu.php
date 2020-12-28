@@ -14,7 +14,7 @@ class Submenu extends Block
         $submenu = $block->submenu->one();
         return ArrayResult::fromArray('submenu', [
             'title' => $submenu->title,
-            'items' => $this->getBlockManager()->mapMany($submenu->navigationitems)
+            'items' => $this->getBlockManager()->map($submenu->navigationitems)
         ]);
     }
 }

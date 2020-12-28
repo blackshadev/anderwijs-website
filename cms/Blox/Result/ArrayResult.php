@@ -8,10 +8,13 @@ class ArrayResult implements ResultInterface
     private array $data;
     public static function fromArray(string $type, array $data)
     {
-        $result = new ArrayResult();
-        $result->type = $type;
-        $result->data = $data;
-        return $result;
+        return new ArrayResult($type, $data);
+    }
+
+    public function __construct(string $type, array $data)
+    {
+        $this->type = $type;
+        $this->data = $data;
     }
 
     public function type()

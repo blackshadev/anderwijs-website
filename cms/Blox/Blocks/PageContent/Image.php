@@ -7,10 +7,11 @@ use Blox\Result\ArrayResult;
 use Blox\Result\ResultInterface;
 use craft\elements\MatrixBlock;
 
-class RichText extends Block
+class Image extends Block
 {
     public function map(MatrixBlock $block): ResultInterface
     {
-        return ArrayResult::fromArray('RichText', [ 'body' => $block->body ]);
+        $image = $block->image->one();
+        return ArrayResult::fromArray('image', [ 'url' => $image->url, 'title' => $image->title ]);
     }
 }

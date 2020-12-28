@@ -1,4 +1,6 @@
 <?php
 
-return \Blox\BlockManager\BlockManager::create()
-    ->register(\Blox\Blocks\PageContent\RichText::byTypeHandle('textBlock'));
+return \Blox\BlockManager\RowBasedBlockManager::create()
+    ->register(\Blox\Blocks\PageContent\RichText::byTypeHandle('richtext'))
+    ->register(\Blox\Blocks\PageContent\Row::byTypeHandle('row'))
+    ->register(\Blox\Blocks\PageContent\Image::byTypeHandle('image'));

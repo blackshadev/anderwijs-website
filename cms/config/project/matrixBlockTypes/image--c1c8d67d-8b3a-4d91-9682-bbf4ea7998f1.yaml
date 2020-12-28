@@ -29,7 +29,7 @@ fields:
       allowedKinds:
         - image
       defaultUploadLocationSource: 'volume:e52f4539-f85a-4dd4-bbfc-91e2f58a1156'
-      defaultUploadLocationSubpath: ''
+      defaultUploadLocationSubpath: 'page-content/{owner.slug}/'
       limit: ''
       localizeRelations: false
       previewMode: full

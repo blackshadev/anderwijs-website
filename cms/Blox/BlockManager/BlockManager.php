@@ -9,33 +9,20 @@ use craft\elements\MatrixBlock;
 
 class BlockManager implements BlockManagerInterface
 {
-    public static function create(): self {
-        return new self();
+    public static function create(): BlockManagerInterface {
+        return new static();
     }
 
     /** @var BlockInterface[] */
     private array $blocks = [];
 
-    public function map(MatrixBlock $item): ?ResultInterface
-    {
-        foreach ($this->blocks as $block) {
-            if($block->accepts($item)) {
-                return $block->map($item);
-            }
-        }
-
-        return null;
-    }
-
-    public function mapMany(MatrixBlockQuery $items): array
+    public function map(MatrixBlockQuery $items): array
     {
         $blocks = [];
 
         foreach ($items as $item) {
-            $block = $this->map($item);
-            if ($block !== null) {
-                $blocks[] = $block;
-            }
+            $block = $this->mapSingle($item);
+            $blocks[] = $block;
         }
 
         return $blocks;
@@ -46,5 +33,16 @@ class BlockManager implements BlockManagerInterface
         $this->blocks[] = $block;
         $block->setBlockManager($this);
         return $this;
+    }
+
+    protected function mapSingle(MatrixBlock $item): ResultInterface
+    {
+        foreach ($this->blocks as $block) {
+            if($block->accepts($item)) {
+                return $block->map($item);
+            }
+        }
+
+        throw new \UnexpectedValueException('Unexpected matrix block, got type ' . $item->getType()->handle);
     }
 }
