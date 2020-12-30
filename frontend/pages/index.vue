@@ -1,18 +1,11 @@
 <template>
-  <div>test</div>
+    <div>test</div>
 </template>
 
 <script>
-
-  export default {
-    async asyncData({ env, $axios, $nav}) {
-      console.log($nav);
-      // console.log(env.CMS_URL);
-      // const content = await $axios.get(`${env.CMS_URL}/navigation.json`);
-      // console.log(content.data);
-      // return {
-      //   content: content.data
-      // }
+export default {
+    middleware({ redirect }) {
+        return redirect('/homepage');
     },
-  }
+};
 </script>

@@ -7,13 +7,14 @@
         }"
     >
         <h2 v-if="title">{{ title }}</h2>
-        <div class="c-blox-row__items --items-{{items.length}}">
-            <blox-item
+        <div :class="['c-blox-row__items', itemsClass]">
+            <div
+                class="c-blox-row__items__item"
                 v-for="item in items"
                 :key="item.id"
-                :type="item.type"
-                :data="item"
-            ></blox-item>
+            >
+                <blox-item :type="item.type" :data="item"></blox-item>
+            </div>
         </div>
     </div>
 </template>
@@ -24,12 +25,40 @@
     @apply w-full;
 
     &__items {
-        @apply flex flex-col;
+        @apply flex flex-col content-between flex-wrap;
         @apply w-full;
 
-        // blox-item {
-        //     @apply w-
-        // }
+        &__item {
+            @apply flex-grow flex-shrink;
+            @apply px-2;
+            &:first-child {
+                @apply pl-0;
+            }
+
+            &:last-child {
+                @apply pr-0;
+            }
+        }
+
+        &.--items-1 &__item {
+            @apply w-full;
+        }
+
+        &.--items-2 &__item {
+            @apply w-1/2;
+        }
+
+        &.--items-3 &__item {
+            @apply w-1/3;
+        }
+
+        &.--items-4 &__item {
+            @apply w-1/4;
+        }
+
+        &.--items-5 &__item {
+            @apply w-1/5;
+        }
     }
 
     &.--horizontal &__items {
@@ -41,6 +70,9 @@
 <script>
 export default {
     computed: {
+        itemsClass() {
+            return '--items-' + Math.min(this.items.length, 5);
+        },
         isHorizontal() {
             return this.data.direction === 'horizontal';
         },

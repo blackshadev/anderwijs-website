@@ -1,15 +1,5 @@
 <template>
-    <div>
-        <h1>{{ page.title }}</h1>
-        <div class="c-page-content">
-            <blox-item
-                v-for="item in page.content"
-                :key="item.id"
-                :type="item.type"
-                :data="item"
-            ></blox-item>
-        </div>
-    </div>
+    <page :title="page.title" :items="page.content"></page>
 </template>
 
 <script>
