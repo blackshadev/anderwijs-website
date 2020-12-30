@@ -38,6 +38,12 @@ install: do-docker-build do-setup-hosts-file start composer-install .env do-craf
 .PHONY: update
 update: do-craft-project-apply
 
+.PHONY: frontend
+frontend: do-frontend-build
+
+.PHONY: frontend-dev
+frontend-dev: do-frontend-dev
+
 shell:
 	docker-compose exec cms /bin/sh
 
@@ -112,6 +118,13 @@ do-setup-hosts-file:
 		sh -c 'cat /dev/hostnames.txt >> /etc/hosts' \
 		echo "Hosts successfully added")
 
+#--- frontend
+do-frontend-build:
+	cd frontend && (yarn generate || cd ..)
+
+do-frontend-dev:
+	cd frontend && (yarn dev || cd ..)
+
 do-show-commands:
 	@echo "\n=== Make commands ===\n"
 	@echo "Project commands:"
@@ -121,3 +134,5 @@ do-show-commands:
 	@echo "    make start                     Start the Docker containers."
 	@echo "    make stop                      Stop the Docker containers."
 	@echo "    make shell                     Open a shell into the CMS Docker"
+	@echo "    make frontend                  Builds the frontend"
+	@echo "    make serve                     Serves the frontend and recompiles on changes"
