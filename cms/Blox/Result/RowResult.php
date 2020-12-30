@@ -11,8 +11,18 @@ class RowResult extends ArrayResult
 
     private string $direction = self::DIRECTION_VERTICAL;
 
+    private ?string $title = null;
+
     /** @var ResultInterface[] */
     private array $items = [];
+
+    public static function create(string $direction, ?string $title, array $data)
+    {
+        $row = new self($data);
+        $row->setTitle($title);
+        $row->setDirection($direction);
+        return $row;
+    }
 
     public function __construct(array $data = [])
     {
@@ -29,8 +39,19 @@ class RowResult extends ArrayResult
         $this->direction = $direction;
     }
 
+    public function setTitle(?string $title): RowResult
+    {
+        $this->title = $title;
+        return $this;
+    }
+
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), [ 'direction' => $this->direction, 'items' => $this->items ]);
+        return array_merge(parent::jsonSerialize(), [
+            'title' => $this->title,
+            'direction' => $this->direction,
+            'items' => $this->items
+        ]);
     }
+
 }

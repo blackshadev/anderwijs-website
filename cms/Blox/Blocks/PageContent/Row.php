@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Blox\Blocks\PageContent;
 
 use Blox\Blocks\Block;
@@ -21,11 +23,14 @@ class Row extends Block
 
     public function map(MatrixBlock $block): ResultInterface
     {
-        $direction = self::translateDirection($block->rowDirection);
+        $direction = self::translateDirection($block->rowDirection->value);
 
-        return new RowResult([
-            'direction' => $direction,
-            'title' => $block->rowTitle
-        ]);
+        return RowResult::create(
+            $direction,
+            $block->rowTitle,
+            [
+                'id' => $block->id,
+            ]
+        );
     }
 }

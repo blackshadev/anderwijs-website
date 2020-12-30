@@ -5,6 +5,8 @@ use craft\elements\Entry;
 return [
     'endpoints' => [
         'navigation.json' => function() {
+            $response = Craft::$app->getResponse();
+            $response->headers->set('Access-Control-Allow-Origin', '*');
 
             return [
                 'elementType' => Entry::class,
@@ -35,8 +37,10 @@ return [
                     ];
                 },
             ];
-        },
+    },
         'pages/<slug>.json' => function($slug) {
+            $response = Craft::$app->getResponse();
+            $response->headers->set('Access-Control-Allow-Origin', '*');
 
             return [
                 'elementType' => Entry::class,

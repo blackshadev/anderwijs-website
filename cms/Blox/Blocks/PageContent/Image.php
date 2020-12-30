@@ -12,6 +12,6 @@ class Image extends Block
     public function map(MatrixBlock $block): ResultInterface
     {
         $image = $block->image->one();
-        return ArrayResult::fromArray('image', [ 'url' => $image->url, 'title' => $image->title ]);
+        return ArrayResult::fromArray('image', [ 'id' => $block->id, 'url' => $image->url, 'title' => $image->title ]);
     }
 }

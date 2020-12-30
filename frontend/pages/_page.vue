@@ -1,7 +1,14 @@
 <template>
     <div>
-        <h1>{{ content.title }}</h1>
-        {{ content }}
+        <h1>{{ page.title }}</h1>
+        <div class="c-page-content">
+            <blox-item
+                v-for="item in page.content"
+                :key="item.id"
+                :type="item.type"
+                :data="item"
+            ></blox-item>
+        </div>
     </div>
 </template>
 
@@ -12,9 +19,9 @@ export default {
             `${env.CMS_URL}/pages/${params.page}.json`
         );
 
-        const content = response.data;
+        const page = response.data;
         return {
-            content,
+            page,
         };
     },
 };
