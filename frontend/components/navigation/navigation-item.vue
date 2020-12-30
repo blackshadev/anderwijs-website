@@ -1,13 +1,13 @@
 <template>
-    <li :class="{ 'c-menu': true, '-main': isMain }">
+    <li :class="{ 'c-navigation-item': true, '-main': isMain }">
         <template v-if="navItem.type === 'submenu'">
             <a>{{ navItem.title }}</a>
             <ul>
-                <menu
+                <navigation-item
                     v-for="subItem in navItem.items"
                     :key="subItem.id"
                     :nav-item="subItem"
-                ></menu>
+                ></navigation-item>
             </ul>
         </template>
         <template v-if="navItem.type === 'pageLink'">
@@ -20,7 +20,7 @@
 </template>
 <script>
 export default {
-    name: 'menu',
+    name: 'navigation-item',
     props: {
         navItem: {
             type: Object,
@@ -31,11 +31,23 @@ export default {
             default: false,
         },
     },
-}
+};
 </script>
 
 <style lang="scss">
-.c-menu {
-    @apply flex;
+.c-navigation-item {
+    @apply p-2;
+
+    a {
+        @apply cursor-pointer;
+    }
+
+    ul {
+        @apply absolute hidden;
+    }
+
+    &:hover ul {
+        @apply block bg-white border border-t-0 border-gray-300;
+    }
 }
 </style>

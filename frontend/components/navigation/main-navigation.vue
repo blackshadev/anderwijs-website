@@ -1,19 +1,19 @@
 <template>
     <ul>
-        <menu
+        <navigation-item
             v-for="navItem in navigation"
             :navItem="navItem"
             :key="navItem.id"
             :isMain="true"
-        ></menu>
+        ></navigation-item>
     </ul>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import menu from '@/components/navigation/menu'
+import navigationItem from '@/components/navigation/navigation-item'
 export default {
-    components: { menu },
+    components: { navigationItem },
     computed: {
         ...mapGetters({
             navigation: 'navigation/mainItems',
@@ -24,6 +24,7 @@ export default {
 
 <style scoped lang="scss">
 ul {
-    @apply list-none flex;
+    @apply list-none flex w-full p-4;
+    @apply border-b-2;
 }
 </style>
