@@ -33,7 +33,7 @@ stop: do-proxy-stop do-docker-stop
 build: do-docker-build
 
 .PHONY: install
-install: do-docker-build do-setup-hosts-file start composer-install .env do-craft-init do-craft-project-apply
+install: do-docker-build do-setup-hosts-file start composer-install do-env do-craft-init do-craft-project-apply
 
 .PHONY: update
 update: do-craft-project-apply
@@ -50,12 +50,17 @@ shell:
 composer-install:
 	docker-compose exec cms composer install
 
-.env:
+do-env: cms/.env frontend/.env
+
+cms/.env:
 	cp cms/.env.dev cms/.env
+
+frontend/.env:
+	cp frontend/.env.dev frontend/.env
 
 #--- Docker
 do-docker-build:
-	@${set-ids} docker-compose build --build-arg USERID=$$(id -u) --build-arg GROUPID=$$(id -g)
+	@${set-ids} docker-compose build --build-arg USERID=$$(id -u) --build-arg GROUPID=$$(id -g) --no-cache
 
 do-docker-stop:
 	docker-compose down

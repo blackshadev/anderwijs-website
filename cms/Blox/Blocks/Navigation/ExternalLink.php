@@ -11,6 +11,9 @@ class ExternalLink extends Block
 {
     public function map(MatrixBlock $block): ResultInterface
     {
-        return ArrayResult::fromArray('externalLink', ['href' => $block->linkURL ]);
+        return ArrayResult::fromArray('externalLink', [
+            'title' => $block->navitemtitle,
+            'href' => $block->linkURL
+        ]);
     }
 }

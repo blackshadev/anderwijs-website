@@ -11,6 +11,7 @@ class Module extends \yii\base\Module
      */
     public function init()
     {
+        Craft::setAlias('@Blox', __DIR__);
         $this->registerBundleDirectory(__DIR__ . '/Bundles/');
 
         parent::init();

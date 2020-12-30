@@ -11,6 +11,11 @@ class PageLink extends Block
 {
     public function map(MatrixBlock $block): ResultInterface
     {
-        return ArrayResult::fromArray('pageLink', ['page' => $block->page->one()->slug ]);
+        $page = $block->page->one();
+        return ArrayResult::fromArray('pageLink', [
+            'id' => $block->id,
+            'page' => $page->slug,
+            'title' => $page->title,
+        ]);
     }
 }
