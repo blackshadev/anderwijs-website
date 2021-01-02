@@ -1,5 +1,11 @@
 <template>
-    <li :class="{ 'c-navigation-item': true, '-main': isMain }">
+    <li
+        :class="{
+            'c-navigation-item': true,
+            '-main': isMain,
+            '-partial-active': isPartialActive,
+        }"
+    >
         <template v-if="navItem.type === 'submenu'">
             <a>{{ navItem.title }}</a>
             <ul class="c-navigation-item__submenu">
@@ -11,7 +17,11 @@
             </ul>
         </template>
         <template v-if="navItem.type === 'pageLink'">
-            <nuxt-link :to="navItem.page">{{ navItem.title }}</nuxt-link>
+            <nuxt-link
+                class="c-navigation-item__page-link"
+                :to="navItem.page"
+                >{{ navItem.title }}</nuxt-link
+            >
         </template>
         <template v-if="navItem.type === 'externalLink'">
             <a :href="navItem.href">{{ navItem.title }}</a>
@@ -37,26 +47,61 @@ export default {
         ...mapGetters({
             activeRoute: 'navigation/activeRoute',
         }),
+        isPartialActive() {
+            const activePage = this.activeRoute.params?.page;
+            function hasSubmenuItemWhichIsActive(navItem) {
+                if (
+                    navItem.type === 'pageLink' &&
+                    navItem.page === activePage
+                ) {
+                    return true;
+                }
+                if (navItem.type !== 'submenu') {
+                    return false;
+                }
+
+                for (const item of navItem.items) {
+                    if (hasSubmenuItemWhichIsActive(item)) {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            return hasSubmenuItemWhichIsActive(this.navItem);
+        },
     },
 };
 </script>
 
 <style lang="scss">
 .c-navigation-item {
-    @apply border-b-2 border-transparent;
-
-    &:not(.-main):hover {
+    @mixin active-link {
         @apply border-b-2 border-aw-green;
+    }
+
+    &.-main.-partial-active {
+        @apply border-t-2 border-aw-green;
     }
 
     a {
         @apply inline-block;
+        @apply w-full;
         @apply py-2 px-4;
         @apply cursor-pointer;
+        @apply border-b-2 border-transparent;
 
         &.-active {
-            @apply border-b-2 border-aw-green;
+            @include active-link;
         }
+    }
+
+    &:not(.-main).-partial-active a {
+        @include active-link;
+    }
+    &:not(.-main) a:hover {
+        @include active-link;
     }
 
     &__submenu {
