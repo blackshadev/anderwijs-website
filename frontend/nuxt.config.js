@@ -6,6 +6,10 @@ export default {
     AAS_URL: process.env.AAS_URL || 'https://aas.anderwijs.nl',
 
   },
+  router: {
+    linkActiveClass: '-active',
+    linkExactActiveClass: null,
+  },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {

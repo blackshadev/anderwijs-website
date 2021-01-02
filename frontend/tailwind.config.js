@@ -7,6 +7,7 @@ module.exports = {
                 dark: { raw: '(prefers-color-scheme: dark)' },
             },
             colors: {
+                'aw-green': '#51b848',
             },
             fontFamily: {
             },

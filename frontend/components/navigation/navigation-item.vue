@@ -2,7 +2,7 @@
     <li :class="{ 'c-navigation-item': true, '-main': isMain }">
         <template v-if="navItem.type === 'submenu'">
             <a>{{ navItem.title }}</a>
-            <ul>
+            <ul class="c-navigation-item__submenu">
                 <navigation-item
                     v-for="subItem in navItem.items"
                     :key="subItem.id"
@@ -19,6 +19,8 @@
     </li>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name: 'navigation-item',
     props: {
@@ -31,18 +33,33 @@ export default {
             default: false,
         },
     },
+    computed: {
+        ...mapGetters({
+            activeRoute: 'navigation/activeRoute',
+        }),
+    },
 };
 </script>
 
 <style lang="scss">
 .c-navigation-item {
-    @apply p-2;
+    @apply border-b-2 border-transparent;
 
-    a {
-        @apply cursor-pointer;
+    &:not(.-main):hover {
+        @apply border-b-2 border-aw-green;
     }
 
-    ul {
+    a {
+        @apply inline-block;
+        @apply py-2 px-4;
+        @apply cursor-pointer;
+
+        &.-active {
+            @apply border-b-2 border-aw-green;
+        }
+    }
+
+    &__submenu {
         @apply absolute hidden;
     }
 

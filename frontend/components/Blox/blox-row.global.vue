@@ -30,14 +30,7 @@
 
         &__item {
             @apply flex-grow flex-shrink;
-            @apply px-2;
-            &:first-child {
-                @apply pl-0;
-            }
-
-            &:last-child {
-                @apply pr-0;
-            }
+            @apply p-2;
         }
 
         &.--items-1 &__item {

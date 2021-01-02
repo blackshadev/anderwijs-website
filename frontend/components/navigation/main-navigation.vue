@@ -24,7 +24,6 @@ export default {
 
 <style scoped lang="scss">
 ul {
-    @apply list-none flex w-full p-4;
-    @apply border-b-2;
+    @apply list-none flex;
 }
 </style>
