@@ -24,7 +24,7 @@
             >
         </template>
         <template v-if="navItem.type === 'externalLink'">
-            <a :href="navItem.href">{{ navItem.title }}</a>
+            <a target="_blank" :href="navItem.href">{{ navItem.title }}</a>
         </template>
     </li>
 </template>
