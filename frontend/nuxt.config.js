@@ -1,5 +1,5 @@
 
-import pageIndex from "./dataproviders/page-index";
+import { pagesAsURL } from "./dataproviders/page-index";
 import { DataProviderContainer } from "./dataproviders/container";
 import axios from 'axios';
 
@@ -68,9 +68,13 @@ export default {
 
   sitemap: {
     hostname: 'https://anderwijs.nl',
-    routes: async () => {
-      const pages = await dataProviderContainer.request(pageIndex);
-      return pages.map((p) => `/${p.slug}`);
+    routes() {
+      return dataProviderContainer.request(pagesAsURL);
+    }
+  },
+  generate: {
+    routes() {
+      return dataProviderContainer.request(pagesAsURL);
     }
   },
 
