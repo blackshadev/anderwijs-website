@@ -9,8 +9,7 @@ module.exports = {
             colors: {
                 'aw-green': '#51b848',
             },
-            fontFamily: {
-            },
+            fontFamily: {},
         },
     },
 }

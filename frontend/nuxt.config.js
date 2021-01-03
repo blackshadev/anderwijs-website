@@ -1,3 +1,10 @@
+
+import pageIndex from "./dataproviders/page-index";
+import { DataProviderContainer } from "./dataproviders/container";
+import axios from 'axios';
+
+const dataProviderContainer = new DataProviderContainer(axios, process.env);
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -30,6 +37,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/data-provider-container.ts'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -52,10 +60,19 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
+
+  sitemap: {
+    hostname: 'https://anderwijs.nl',
+    routes: async () => {
+      const pages = await dataProviderContainer.request(pageIndex);
+      return pages.map((p) => `/${p.slug}`);
+    }
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

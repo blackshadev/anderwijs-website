@@ -3,13 +3,12 @@
 </template>
 
 <script>
-export default {
-    async asyncData({ params, env, $axios }) {
-        const response = await $axios.get(
-            `${env.CMS_URL}/pages/${params.page}.json`
-        );
+import pageProvider from '~/dataproviders/page';
 
-        const page = response.data;
+export default {
+    async asyncData({ params, $dataprovider }) {
+        const page = await $dataprovider.request(pageProvider, params.page);
+
         return {
             page,
         };
