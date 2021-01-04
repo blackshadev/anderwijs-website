@@ -37,7 +37,7 @@ return [
                     ];
                 },
             ];
-    },
+        },
         'pages/<slug>.json' => function($slug) {
             $response = Craft::$app->getResponse();
             $response->headers->set('Access-Control-Allow-Origin', '*');
@@ -54,6 +54,25 @@ return [
                         'title' => $entry->title,
                         'slug' => $entry->slug,
                         'content' => $blockMapper->map($entry->pageContent)
+                    ];
+                }
+            ];
+        },
+        'socials.json' => function() {
+            $response = Craft::$app->getResponse();
+            $response->headers->set('Access-Control-Allow-Origin', '*');
+
+            return [
+                'elementType' => Entry::class,
+                'criteria' => [ 'section' => 'socials' ],
+                'one' => true,
+                'transformer' => function(Entry $entry) {
+
+                    return [
+                        'facebookUrl' => $entry->facebookUrl,
+                        'instagramUrl' => $entry->instagramUrl,
+                        'twitterUrl' => $entry->twitterUrl,
+                        'youtubeUrl' => $entry->youtubeUrl,
                     ];
                 }
             ];

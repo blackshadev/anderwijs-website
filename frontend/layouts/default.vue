@@ -1,6 +1,6 @@
 <template>
     <div class="c-main">
-        <div class="c-main__header">
+        <header class="c-main__header">
             <div class="c-main__header__container container mx-auto">
                 <div class="c-main__header__logo">
                     <nuxt-link to="/"
@@ -11,17 +11,34 @@
                     <main-navigation></main-navigation>
                 </div>
             </div>
-        </div>
-        <div class="c-main__container container mx-auto">
-            <Nuxt />
-        </div>
+        </header>
+        <article class="c-main__content">
+            <div class="container mx-auto">
+                <Nuxt />
+            </div>
+        </article>
+        <footer class="c-main__footer">
+            <div class="c-main__footer__container container mx-auto">
+                <div class="c-main-footer__social">
+                    <p>Hoe sjaal? Social!</p>
+                    <social-icons></social-icons>
+                </div>
+            </div>
+        </footer>
     </div>
 </template>
 
 <style lang="scss">
+#__nuxt {
+    @apply min-h-screen;
+}
 .c-main {
+    @apply min-h-screen;
+    @apply flex flex-col;
+
     &__header {
         @apply border-b-2 border-aw-green;
+        @apply flex-shrink-0;
 
         &__container {
             @apply flex;
@@ -40,11 +57,25 @@
         }
     }
 
-    &__container {
+    &__content {
         @apply pt-3;
+        @apply flex-grow flex-shrink-0;
+    }
+    &__footer {
+        p {
+            @apply mb-1;
+        }
+        @apply flex-shrink-0;
+        @apply w-full;
+        @apply p-3;
+        @apply border-t-2 border-aw-green;
+        @apply self-end justify-self-end;
+        @apply text-sm;
     }
 }
-
+body {
+    @apply min-h-screen;
+}
 h1 {
     @apply font-bold text-3xl;
 }
@@ -52,3 +83,9 @@ h2 {
     @apply font-bold text-xl;
 }
 </style>
+<script>
+import SocialIcons from "@/components/footer/social-icons";
+export default {
+    components: {SocialIcons}
+}
+</script>

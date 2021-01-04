@@ -16,7 +16,7 @@ export const mutations = {
 
 export const getters = {
   mainItems(state) {
-    return state.navigation.item;
+    return state.navigation.item ?? [];
   },
   activeRoute(state) {
     return state.activeRoute;

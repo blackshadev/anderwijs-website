@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: 16e96ae2-8e8a-4fe6-9f5b-243b2141ef25
+handle: youtubeUrl
+instructions: ''
+name: 'Youtube URL'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

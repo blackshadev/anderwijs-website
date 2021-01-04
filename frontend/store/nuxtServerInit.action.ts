@@ -8,7 +8,10 @@ import {IRoute} from "~/types/nuxtRoute";
 
 type ApiResponse = ICraftElements<INavigation>;
 export default async function({ commit }: { commit: Commit }, { env, $axios, route }: { env: Env, $axios: NuxtAxiosInstance, route: IRoute }) {
-  const content = await $axios.get<void, AxiosResponse<ApiResponse>>(`${env.CMS_URL}/navigation.json`);
-  commit('navigation/set', content.data.data[0]);
+  const naviation = await $axios.get<void, AxiosResponse<ApiResponse>>(`${env.CMS_URL}/navigation.json`);
+  commit('navigation/set', naviation.data.data[0]);
   commit('navigation/setRoute', { name: route.name, params: route.params, path: route.path });
+
+  const socials = await $axios.get<void, AxiosResponse<ApiResponse>>(`${env.CMS_URL}/socials.json`);
+  commit('social/set', socials.data);
 }

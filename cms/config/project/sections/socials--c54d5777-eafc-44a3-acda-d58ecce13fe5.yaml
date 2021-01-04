@@ -1,0 +1,11 @@
+enableVersioning: true
+handle: socials
+name: Socials
+propagationMethod: all
+siteSettings:
+  47340649-8bf4-4792-9f07-6f7fc18bff55:
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: socials
+type: single
