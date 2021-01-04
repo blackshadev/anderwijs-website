@@ -2,7 +2,7 @@ contentColumnType: string
 fieldGroup: c45017aa-f34b-4172-999a-befebd813965
 handle: navigationitems
 instructions: ''
-name: navigationItems
+name: Navigatie
 searchable: false
 settings:
   contentTable: '{{%matrixcontent_navigationitems}}'

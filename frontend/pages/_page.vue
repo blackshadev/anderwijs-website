@@ -1,5 +1,5 @@
 <template>
-    <page :title="page.title" :items="page.content"></page>
+    <page :title="page.title" :hide-title="!page.showTitle" :items="page.content"></page>
 </template>
 
 <script>

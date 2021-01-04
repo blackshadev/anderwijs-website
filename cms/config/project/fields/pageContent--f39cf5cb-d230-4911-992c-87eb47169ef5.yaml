@@ -2,7 +2,7 @@ contentColumnType: string
 fieldGroup: aa9188d8-383c-4819-a1af-ca7c5f64a717
 handle: pageContent
 instructions: ''
-name: pageContent
+name: Inhoud
 searchable: false
 settings:
   contentTable: '{{%matrixcontent_pagecontent}}'

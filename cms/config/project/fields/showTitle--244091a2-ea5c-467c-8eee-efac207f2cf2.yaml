@@ -1,0 +1,13 @@
+contentColumnType: boolean
+fieldGroup: 7f997ddd-6670-44ad-8584-c78d204c8d9d
+handle: showTitle
+instructions: ''
+name: 'Met Titel'
+searchable: false
+settings:
+  default: true
+  offLabel: verborgen
+  onLabel: weergegeven
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

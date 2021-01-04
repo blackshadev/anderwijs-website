@@ -21,7 +21,7 @@
 
 <style lang="scss" scoped>
 .c-blox-row {
-    @apply mt-3;
+    @apply mb-3;
     @apply w-full;
 
     &__items {

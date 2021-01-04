@@ -19,3 +19,9 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+img {
+    @apply w-full;
+}
+</style>
