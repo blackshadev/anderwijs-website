@@ -9,19 +9,26 @@ use craft\elements\Entry;
 class Page implements EntryInterface
 {
     private string $title;
+    private ?string $slug = null;
     /** @var Row[] */
     private array $rows = [];
 
-    public static function create($title): self
+    public static function create(string $title): self
     {
         $page = new Page();
-        $page->setTitle($title);
+        $page->title($title);
         return $page;
     }
 
-    public function setTitle(string $title): self
+    public function title(string $title): self
     {
         $this->title = $title;
+        return $this;
+    }
+
+    public function slug(string $slug): self
+    {
+        $this->slug = $slug;
         return $this;
     }
 
@@ -72,9 +79,16 @@ class Page implements EntryInterface
         \Craft::$app->getElements()->saveElement($page->asEntry());
     }
 
-    public static function delete(string $slug)
+    /**
+     * @param string[] $slugs
+     */
+    public static function delete(array $slugs)
     {
-        $entry = Entry::find()->section('pages')->slug($slug)->one();
-        \Craft::$app->getElements()->deleteElement($entry);
+        foreach ($slugs as $slug) {
+            $entry = Entry::find()->section('pages')->slug($slug)->one();
+            if ($entry !== null) {
+                \Craft::$app->getElements()->deleteElement($entry);
+            }
+        }
     }
 }

@@ -22,6 +22,7 @@ class m201228_104324_add_pages extends Migration
     {
         // Place migration code here...
         $page = Page::create('Test pagina')
+            ->slug('test-pagina')
             ->add(Row::vertical([
                 RichText::create('test'),
                 Image::create()
@@ -38,6 +39,6 @@ class m201228_104324_add_pages extends Migration
      */
     public function safeDown()
     {
-        Page::delete('test-pagina');
+        Page::delete(['test-pagina']);
     }
 }
