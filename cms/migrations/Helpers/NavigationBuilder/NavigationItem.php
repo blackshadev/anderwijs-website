@@ -3,10 +3,9 @@
 
 namespace Migrations\Helpers\NavigationBuilder;
 
+use Migrations\Helpers\MatrixBlock;
 
-use Migrations\Helpers\MatrixBlockInterface;
-
-abstract class NavigationItem implements MatrixBlockInterface
+abstract class NavigationItem extends MatrixBlock
 {
 
 }

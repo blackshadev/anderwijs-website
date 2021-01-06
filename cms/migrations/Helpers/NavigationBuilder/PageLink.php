@@ -16,19 +16,22 @@ class PageLink extends NavigationItem
         return $link;
     }
 
-    public function asArray(): array
-    {
-        $page = EntryHelper::findBySlug('pages', $this->pageSlug);
-
-        return [
-            'type' => 'page',
-            'page' => $page !== null ? [$page->id] : []
-        ];
-    }
-
     public function pageSlug(string $pageSlug): PageLink
     {
         $this->pageSlug = $pageSlug;
         return $this;
+    }
+
+    protected function fields(): array
+    {
+        $page = EntryHelper::findBySlug('pages', $this->pageSlug);
+        return [
+            'page' => $page !== null ? [$page->id] : []
+        ];
+    }
+
+    protected function type(): string
+    {
+        return 'page';
     }
 }

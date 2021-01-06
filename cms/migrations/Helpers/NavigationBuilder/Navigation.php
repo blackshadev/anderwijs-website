@@ -42,6 +42,7 @@ class Navigation
     {
         $entry = new Entry();
         $entry->title = $this->title;
+        $entry->slug = $this->slug;
         $entry->setFieldValue('navigationitems', $this->itemsAsArray());
 
         $section = \Craft::$app->sections->getSectionByHandle('navigation');

@@ -13,10 +13,11 @@ class Page implements EntryInterface
     /** @var Row[] */
     private array $rows = [];
 
-    public static function create(string $title): self
+    public static function create(string $title, string $slug = null): self
     {
         $page = new Page();
         $page->title($title);
+        $page->slug($slug);
         return $page;
     }
 
@@ -26,7 +27,7 @@ class Page implements EntryInterface
         return $this;
     }
 
-    public function slug(string $slug): self
+    public function slug(?string $slug): self
     {
         $this->slug = $slug;
         return $this;
@@ -75,7 +76,6 @@ class Page implements EntryInterface
 
     public static function save(Page $page)
     {
-
         \Craft::$app->getElements()->saveElement($page->asEntry());
     }
 

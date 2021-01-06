@@ -27,12 +27,16 @@ class ExternalLink extends NavigationItem
         return $this;
     }
 
-    public function asArray(): array
+    public function fields(): array
     {
         return [
-            'type' => 'external',
             'navitemtitle' => $this->title,
             'linkURL' => $this->url
         ];
+    }
+
+    protected function type(): string
+    {
+        return 'external';
     }
 }

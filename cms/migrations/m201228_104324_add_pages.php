@@ -20,18 +20,37 @@ class m201228_104324_add_pages extends Migration
      */
     public function safeUp()
     {
-        // Place migration code here...
-        $page = Page::create('Test pagina')
-            ->slug('test-pagina')
-            ->add(Row::vertical([
-                RichText::create('test'),
-                Image::create()
-                    ->setTitle('Groen')
-                    ->setImage('tenor.gif')
-                    ->setVolume('local')
-            ]));
+        Page::save(
+            Page::create('De bijles van anderwijs', 'de-bijles-van-anderwijs')
+        );
 
-        Page::save($page);
+        Page::save(
+            Page::create('Het hoe en wat op kamp', 'het-hoe-en-wat-op-kamp')
+        );
+
+        Page::save(
+            Page::create('Kampervaringen', 'kampervaringen')
+        );
+
+        Page::save(
+            Page::create('Kosten en korting', 'kosten-en-korting')
+        );
+
+        Page::save(
+            Page::create('Algemene voorwaarde', 'algemene-voorwaarden')
+        );
+
+        Page::save(
+            Page::create('Test pagina')
+                ->slug('test-pagina')
+                ->add(Row::vertical([
+                    RichText::create('test'),
+                    Image::create()
+                        ->setTitle('Groen')
+                        ->setImage('tenor.gif')
+                        ->setVolume('local')
+                ]))
+        );
     }
 
     /**
@@ -39,6 +58,9 @@ class m201228_104324_add_pages extends Migration
      */
     public function safeDown()
     {
-        Page::delete(['test-pagina']);
+        Page::delete([
+            'test-pagina', 'algemene-voorwaarden', 'kosten-en-korting', 'contact',
+            'kampervaringen', 'het-hoe-en-wat-op-kamp', 'de-bijles-van-anderwijs'
+        ]);
     }
 }
