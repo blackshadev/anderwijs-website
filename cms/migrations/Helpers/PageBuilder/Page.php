@@ -2,14 +2,16 @@
 
 namespace Migrations\Helpers\PageBuilder;
 
-use Migrations\Helpers\EntryInterface;
-use Migrations\Helpers\MatrixBlockInterface;
+use Migrations\Helpers\BaseEntry;
 use craft\elements\Entry;
 
-class Page implements EntryInterface
+class Page extends BaseEntry
 {
+    const SECTION = 'pages';
+
     private string $title;
     private ?string $slug = null;
+    private bool $showTitle = true;
     /** @var Row[] */
     private array $rows = [];
 
@@ -19,6 +21,12 @@ class Page implements EntryInterface
         $page->title($title);
         $page->slug($slug);
         return $page;
+    }
+
+    public function hideTitle(): self
+    {
+        $this->showTitle = false;
+        return $this;
     }
 
     public function title(string $title): self
@@ -55,23 +63,18 @@ class Page implements EntryInterface
         return $blocks;
     }
 
-    public function asEntry(): Entry
+    protected function section(): string
     {
-        $entry = new Entry();
-        $entry->title = $this->title;
-        $entry->setFieldValue('pageContent', $this->rowsAsArray());
-
-        $section = \Craft::$app->sections->getSectionByHandle('pages');
-        $type = $section->getEntryTypes()[0];
-        $entry->sectionId = $section->id;
-        $entry->typeId = $type->id;
-
-        return $entry;
+        return self::SECTION;
     }
 
-    public function section(): string
+    protected function fields(): array
     {
-        return 'page';
+        return [
+            'title' => $this->title,
+            'pageContent' => $this->rowsAsArray(),
+            'showTitle' => $this->showTitle,
+        ];
     }
 
     public static function save(Page $page)
@@ -85,7 +88,7 @@ class Page implements EntryInterface
     public static function delete(array $slugs)
     {
         foreach ($slugs as $slug) {
-            $entry = Entry::find()->section('pages')->slug($slug)->one();
+            $entry = Entry::find()->section(self::SECTION)->slug($slug)->one();
             if ($entry !== null) {
                 \Craft::$app->getElements()->deleteElement($entry);
             }

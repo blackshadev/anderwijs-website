@@ -2,10 +2,13 @@
 
 namespace Migrations\Helpers\NavigationBuilder;
 
-use craft\elements\Entry;
+use Migrations\Helpers\BaseEntry;
+use Migrations\Helpers\EntryHelper;
 
-class Navigation
+class Navigation extends BaseEntry
 {
+    const SECTION = 'navigation';
+
     private string $title;
     private ?string $slug = null;
     /** @var NavigationItem[] */
@@ -38,21 +41,6 @@ class Navigation
         return $this;
     }
 
-    public function asEntry(): Entry
-    {
-        $entry = new Entry();
-        $entry->title = $this->title;
-        $entry->slug = $this->slug;
-        $entry->setFieldValue('navigationitems', $this->itemsAsArray());
-
-        $section = \Craft::$app->sections->getSectionByHandle('navigation');
-        $type = $section->getEntryTypes()[0];
-        $entry->sectionId = $section->id;
-        $entry->typeId = $type->id;
-
-        return $entry;
-    }
-
     public static function create(): self
     {
         return new self();
@@ -72,10 +60,24 @@ class Navigation
     public static function delete(array $slugs)
     {
         foreach ($slugs as $slug) {
-            $entry = Entry::find()->section('navigation')->slug($slug)->one();
+            $entry = EntryHelper::findBySlug(self::SECTION, $slug);
             if ($entry !== null) {
                 \Craft::$app->getElements()->deleteElement($entry);
             }
         }
+    }
+
+    protected function fields(): array
+    {
+        return [
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'navigationitems' => $this->itemsAsArray(),
+        ];
+    }
+
+    protected function section(): string
+    {
+        return self::SECTION;
     }
 }

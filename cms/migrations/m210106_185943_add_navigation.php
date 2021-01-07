@@ -29,30 +29,37 @@ class m210106_185943_add_navigation extends Migration
                 ->item(PageLink::create('kampagenda'))
                 ->item(PageLink::create('kosten-en-korting'))
                 ->item(PageLink::create('algemene-voorwaarden'))
+                ->item(PageLink::create('homepage'))
+        );
+
+        Navigation::save(
+            Navigation::create()
+                ->slug('inschrijven')
+                ->title('Inschrijven')
+                ->item(PageLink::create('inschrijven-scholieren'))
+                ->item(PageLink::create('inschrijven-leiding'))
         );
 
         Navigation::save(
             Navigation::create()
                 ->slug('vrijwilligers')
                 ->title('Vrijwilligers')
-                ->item(PageLink::create('test-pagina'))
-                ->item(
-                    ExternalLink::create()
-                        ->title('Aas')
-                        ->url('https://aas2.anderwijs.nl')
-                )
+                ->item(PageLink::create('informatie-voor-nieuwe-vrijwilligers'))
+                ->item(PageLink::create('ervaringen-van-leiding'))
+                ->item(PageLink::create('ledenagenda'))
+                ->item(PageLink::create('bestuur-en-commissies'))
+                ->item(PageLink::create('startpagina-voor-leden'))
         );
 
         Navigation::save(
             Navigation::create()
                 ->slug('contact')
                 ->title('Contact')
-                ->item(PageLink::create('test-pagina'))
-                ->item(
-                    ExternalLink::create()
-                        ->title('Aas')
-                        ->url('https://aas2.anderwijs.nl')
-                )
+                ->item(PageLink::create('contact'))
+                ->item(PageLink::create('doneren-aan-anderwijs'))
+                ->item(PageLink::create('privacystatement'))
+                ->item(PageLink::create('faq'))
+                ->item(PageLink::create('preventie-en-integriteitsbeleid'))
         );
 
         Navigation::save(
@@ -70,6 +77,6 @@ class m210106_185943_add_navigation extends Migration
      */
     public function safeDown()
     {
-        Navigation::delete(['main', 'vrijwilligers', 'bijles']);
+        Navigation::delete(['main', 'vrijwilligers', 'bijles', 'contact', 'inschrijven']);
     }
 }

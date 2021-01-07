@@ -41,8 +41,57 @@ class m201228_104324_add_pages extends Migration
         );
 
         Page::save(
-            Page::create('Test pagina')
-                ->slug('test-pagina')
+            Page::create('Inschrijven scholieren', 'inschrijven-scholieren')
+        );
+
+        Page::save(
+            Page::create('Inschrijven leiding', 'inschrijven-leiding')
+        );
+
+        Page::save(
+            Page::create('Informatie voor nieuwe vrijwilligers', 'informatie-voor-nieuwe-vrijwilligers')
+        );
+
+        Page::save(
+            Page::create('Ervaringen van leiding', 'ervaringen-van-leiding')
+        );
+
+        Page::save(
+            Page::create('Ledenagenda', 'ledenagenda')
+        );
+
+        Page::save(
+            Page::create('Bestuur en commissies', 'bestuur-en-commissies')
+        );
+
+        Page::save(
+            Page::create('Startpagina voor leden', 'startpagina-voor-leden')
+        );
+
+        Page::save(
+            Page::create('Contactgegevens', 'contact')
+        );
+
+        Page::save(
+            Page::create('Doneren aan Anderwijs', 'doneren-aan-anderwijs')
+        );
+
+        Page::save(
+            Page::create('Privacystatement', 'privacystatement')
+        );
+
+        Page::save(
+            Page::create('Veel gestelde vragen', 'faq')
+        );
+
+        Page::save(
+            Page::create('Preventie en integriteitsbeleid', 'preventie-en-integriteitsbeleid')
+        );
+
+        Page::save(
+            Page::create('Thuispagina')
+                ->slug('homepage')
+                ->hideTitle()
                 ->add(Row::vertical([
                     RichText::create('test'),
                     Image::create()
@@ -59,8 +108,11 @@ class m201228_104324_add_pages extends Migration
     public function safeDown()
     {
         Page::delete([
-            'test-pagina', 'algemene-voorwaarden', 'kosten-en-korting', 'contact',
-            'kampervaringen', 'het-hoe-en-wat-op-kamp', 'de-bijles-van-anderwijs'
+            'homepage', 'algemene-voorwaarden', 'kosten-en-korting', 'contact',
+            'kampervaringen', 'het-hoe-en-wat-op-kamp', 'de-bijles-van-anderwijs',
+            'inschrijven-scholieren', 'inschrijven-leiding', 'informatie-voor-nieuwe-vrijwilligers',
+            'ervaringen-van-leiding', 'ledenagenda', 'bestuur-en-commissies', 'startpagina-voor-leden',
+            'contact', 'doneren-aan-anderwijs', 'privacystatement', 'faq', 'preventie-en-integriteitsbeleid'
         ]);
     }
 }
