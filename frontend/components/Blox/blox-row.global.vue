@@ -30,8 +30,8 @@
         @apply w-full;
 
     }
+
     &__cell {
-        @apply flex-grow flex-shrink;
         @apply p-2;
         @apply w-full;
     }
@@ -52,15 +52,27 @@
         }
 
         @supports (display: grid) {
-            @apply grid gap-0;
+            @apply grid gap-4;
 
-            &__cell {
+            #{$root}__cell {
                 @apply p-0;
             }
 
             @for $i from 1 through 5 {
                 &.--c-#{$i} {
-                    @apply grid-cols-#{$i};
+                    @apply grid-cols-1;
+
+                    @screen sm {
+                        @apply grid-cols-#{min($i, 2)};
+                    }
+
+                    @screen md {
+                        @apply grid-cols-#{min($i, 3)};
+                    }
+
+                    @screen lg {
+                        @apply grid-cols-#{$i};
+                    }
 
                     #{$root}__cell {
                         @apply w-full;

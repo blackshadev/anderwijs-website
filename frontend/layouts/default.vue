@@ -1,19 +1,11 @@
 <template>
     <div class="c-main">
+        <a class="sr-only focus:not-sr-only" href="#content">Naar content</a>
         <header class="c-main__header">
-            <div class="c-main__header__container container mx-auto">
-                <div class="c-main__header__logo">
-                    <nuxt-link to="/"
-                        ><img src="~/assets/logo.png" alt="Anderwijs"
-                    /></nuxt-link>
-                </div>
-                <div class="c-main__header__navigation">
-                    <main-navigation></main-navigation>
-                </div>
-            </div>
+            <main-navigation></main-navigation>
         </header>
         <article class="c-main__content">
-            <div class="container mx-auto">
+            <div class="container mx-auto" id="content">
                 <Nuxt />
             </div>
         </article>
