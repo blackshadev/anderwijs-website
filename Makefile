@@ -45,7 +45,7 @@ frontend: do-frontend-build
 frontend-dev: do-frontend-dev
 
 shell:
-	docker-compose exec cms /bin/sh
+	@${set-ids} docker-compose exec cms /bin/sh
 
 composer-install:
 	docker-compose exec cms composer install
@@ -89,7 +89,7 @@ do-cms-start:
 do-craft-setup:
 	@echo "\n=== Craft CMS: Setup project ===\n"
 	sleep 3 # we need to wait on the database to become ready. This can be nicer, but I dont know how
-	docker-compose exec cms ./craft setup
+	@${set-ids} docker-compose exec cms ./craft setup
 
 do-craft-init:
 	@echo "\n=== Craft CMS: Setup project ===\n"
@@ -103,7 +103,14 @@ do-craft-init:
 		--timezone=
 
 do-craft-project-apply:
-	docker-compose exec cms ./craft project-config/apply --force
+	@${set-ids} docker-compose exec cms ./craft project-config/apply --force
+
+do-craft-migrations:
+	@${set-ids} docker-compose exec cms ./craft migrate --interactive=0
+
+do-craft-migrations-refresh:
+	@${set-ids} docker-compose exec cms ./craft migrate/down all --interactive=0
+	@${set-ids} docker-compose exec cms ./craft migrate/fresh --interactive=0
 
 #--- Misc
 do-setup-hosts-file:

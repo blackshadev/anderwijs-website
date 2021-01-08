@@ -2,20 +2,26 @@
 
 namespace Migrations\Helpers\PageBuilder;
 
+use craft\base\VolumeInterface;
 use craft\elements\Asset;
 use craft\records\VolumeFolder;
 use Migrations\Helpers\MatrixBlock;
+use Webmozart\Assert\Assert;
 
 class Image extends MatrixBlock
 {
-    private string $title;
+    private ?string $title = null;
+    private ?string $volume = null;
     private string $image;
-    private string $volume;
     private int $assetId;
 
-    public static function create(): self
+    public static function create(?string $path = null): self
     {
-        return new self();
+        $image = new self();
+        if($path) {
+            $image->image = $path;
+        }
+        return $image;
     }
 
     public function type(): string
@@ -50,12 +56,13 @@ class Image extends MatrixBlock
 
     public function beforeLoad(): void
     {
-        $volume = \Craft::$app->volumes->getVolumeByHandle($this->volume);
+        $volume = $this->resolveVolume();
         $folder = VolumeFolder::findOne([
             'parentId' => null,
             'name' => $volume->name,
             'volumeId' => $volume->id,
         ]);
+        Assert::notNull($folder);
 
         $dest = \Craft::$app->getPath()->getStoragePath() . '/runtime/temp/' . $this->image;
         $src = __DIR__ . '/Images/' . $this->image;
@@ -72,5 +79,19 @@ class Image extends MatrixBlock
         \Craft::$app->elements->saveElement($asset);
 
         $this->assetId = $asset->id;
+    }
+
+    protected function resolveVolume(): VolumeInterface
+    {
+        if ($this->volume != null) {
+            $volume = \Craft::$app->volumes->getVolumeByHandle($this->volume);
+        } else {
+            $volume = \Craft::$app->volumes->getAllVolumes()[0] ?? null;
+        }
+
+        Assert::notNull($volume);
+
+        return $volume;
+
     }
 }

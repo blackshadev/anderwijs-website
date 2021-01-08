@@ -81,7 +81,7 @@ class m201228_104324_add_pages extends Migration
         );
 
         Page::save(
-            Page::create('Veel gestelde vragen', 'faq')
+            Page::create('Veelgestelde vragen', 'faq')
         );
 
         Page::save(
@@ -93,11 +93,20 @@ class m201228_104324_add_pages extends Migration
                 ->slug('homepage')
                 ->hideTitle()
                 ->add(Row::vertical([
-                    RichText::create('test'),
-                    Image::create()
-                        ->setTitle('Groen')
-                        ->setImage('tenor.gif')
-                        ->setVolume('local')
+                    Image::create('hero.jpg'),
+                    RichText::create('
+                        <p>Welkom bij Anderwijs! De plek om te leren</p>
+                    '),
+                ]))
+                ->add(Row::horizontal([
+                    Image::create('placeholder.jpg'),
+                    Image::create('placeholder.jpg'),
+                    Image::create('placeholder.jpg'),
+                    Image::create('placeholder.jpg'),
+                    Image::create('placeholder.jpg'),
+                    Image::create('placeholder.jpg'),
+                    Image::create('placeholder.jpg'),
+                    Image::create('placeholder.jpg'),
                 ]))
         );
     }

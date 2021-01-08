@@ -29,7 +29,6 @@ class m210106_185943_add_navigation extends Migration
                 ->item(PageLink::create('kampagenda'))
                 ->item(PageLink::create('kosten-en-korting'))
                 ->item(PageLink::create('algemene-voorwaarden'))
-                ->item(PageLink::create('homepage'))
         );
 
         Navigation::save(

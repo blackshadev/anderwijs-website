@@ -7,9 +7,9 @@
         }"
     >
         <h2 v-if="title">{{ title }}</h2>
-        <div :class="['c-blox-row__items', itemsClass]">
+        <div :class="['c-blox-row__group', itemsClass]">
             <div
-                class="c-blox-row__items__item"
+                class="c-blox-row__cell"
                 v-for="item in items"
                 :key="item.id"
             >
@@ -24,38 +24,50 @@
     @apply mb-3;
     @apply w-full;
 
-    &__items {
+    &__group {
+
         @apply flex flex-col content-between flex-wrap;
         @apply w-full;
 
-        &__item {
-            @apply flex-grow flex-shrink;
-            @apply p-2;
-        }
+    }
+    &__cell {
+        @apply flex-grow flex-shrink;
+        @apply p-2;
+        @apply w-full;
+    }
 
-        &.--items-1 &__item {
+    $root: &;
+
+    &.--horizontal &__group {
+        @apply flex-row;
+
+        &.--c-1 #{$root}__cell {
             @apply w-full;
         }
 
-        &.--items-2 &__item {
-            @apply w-1/2;
+        @for $i from 2 through 5 {
+            &.--c-#{$i} #{$root}__cell {
+                @apply w-1/#{$i};
+            }
         }
 
-        &.--items-3 &__item {
-            @apply w-1/3;
-        }
+        @supports (display: grid) {
+            @apply grid gap-0;
 
-        &.--items-4 &__item {
-            @apply w-1/4;
-        }
+            &__cell {
+                @apply p-0;
+            }
 
-        &.--items-5 &__item {
-            @apply w-1/5;
-        }
-    }
+            @for $i from 1 through 5 {
+                &.--c-#{$i} {
+                    @apply grid-cols-#{$i};
 
-    &.--horizontal &__items {
-        @apply flex-row;
+                    #{$root}__cell {
+                        @apply w-full;
+                    }
+                }
+            }
+        }
     }
 }
 </style>
@@ -64,7 +76,7 @@
 export default {
     computed: {
         itemsClass() {
-            return '--items-' + Math.min(this.items.length, 5);
+            return '--c-' + Math.min(this.items.length, 5);
         },
         isHorizontal() {
             return this.data.direction === 'horizontal';

@@ -72,6 +72,7 @@ class Page extends BaseEntry
     {
         return [
             'title' => $this->title,
+            'slug' => $this->slug,
             'pageContent' => $this->rowsAsArray(),
             'showTitle' => $this->showTitle,
         ];

@@ -3,6 +3,7 @@
 namespace Blox\BlockManager;
 
 use Blox\Blocks\BlockInterface;
+use Blox\Result\EmptyResult;
 use Blox\Result\ResultInterface;
 use craft\elements\db\MatrixBlockQuery;
 use craft\elements\MatrixBlock;
@@ -16,12 +17,18 @@ class BlockManager implements BlockManagerInterface
     /** @var BlockInterface[] */
     private array $blocks = [];
 
+    /**
+     * @return ResultInterface[]
+     */
     public function map(MatrixBlockQuery $items): array
     {
         $blocks = [];
 
         foreach ($items as $item) {
             $block = $this->mapSingle($item);
+            if ($block instanceof EmptyResult) {
+                continue;
+            }
             $blocks[] = $block;
         }
 
