@@ -9,7 +9,9 @@ module.exports = {
             colors: {
                 'aw-green': '#51b848',
             },
-            fontFamily: {},
+        },
+        fontFamily: {
+            sans: ['"Fira Sans"', 'Arial', 'sans-serif']
         },
     },
 }

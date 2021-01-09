@@ -31,6 +31,7 @@
     &__header {
         @apply border-b-2 border-aw-green;
         @apply flex-shrink-0;
+        @apply mb-3;
 
         &__container {
             @apply flex;
@@ -50,19 +51,20 @@
     }
 
     &__content {
-        @apply pt-3;
         @apply flex-grow flex-shrink-0;
+        @apply mb-10;
     }
+
     &__footer {
         p {
-            @apply mb-1;
+            @apply mb-2;
         }
         @apply flex-shrink-0;
         @apply w-full;
-        @apply p-3;
         @apply border-t-2 border-aw-green;
         @apply self-end justify-self-end;
         @apply text-sm;
+        @apply py-5;
     }
 }
 body {
@@ -76,8 +78,8 @@ h2 {
 }
 </style>
 <script>
-import SocialIcons from "@/components/footer/social-icons";
+import SocialIcons from '@/components/footer/social-icons';
 export default {
-    components: {SocialIcons}
-}
+    components: { SocialIcons },
+};
 </script>

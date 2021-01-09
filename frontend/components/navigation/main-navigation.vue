@@ -5,7 +5,7 @@
                 ><img src="~/assets/logo.png" alt="Anderwijs"
             /></nuxt-link>
         </div>
-        <div class="c-main-navigation__navigation">
+        <nav class="c-main-navigation__navigation">
             <ul>
                 <navigation-item
                     v-for="navItem in navigation"
@@ -14,7 +14,7 @@
                     :isMain="true"
                 ></navigation-item>
             </ul>
-        </div>
+        </nav>
     </div>
 </template>
 

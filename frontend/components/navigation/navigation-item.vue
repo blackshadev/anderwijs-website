@@ -20,6 +20,7 @@
             <nuxt-link
                 class="c-navigation-item__page-link"
                 :to="navItem.page"
+                :aria-current="isActive ? 'page' : false"
                 @focus.native="focusMenuItem(true)"
                 @blur.native="focusMenuItem(false)"
                 >{{ navItem.title }}</nuxt-link
@@ -55,8 +56,14 @@ export default {
         ...mapGetters({
             activeRoute: 'navigation/activeRoute',
         }),
+        activePage() {
+            return this.activeRoute.params?.page;
+        },
+        isActive() {
+            return this.navItem.page === this.activePage;
+        },
         isPartialActive() {
-            const activePage = this.activeRoute.params?.page;
+            const activePage = this.activePage;
             function hasSubmenuItemWhichIsActive(navItem) {
                 if (
                     navItem.type === 'pageLink' &&
@@ -119,6 +126,7 @@ export default {
 
     &__submenu {
         @apply sr-only;
+        @apply shadow-lg;
     }
 
     &__submenu.focus,

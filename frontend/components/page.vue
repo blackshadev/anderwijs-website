@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 v-if="!hideTitle">{{ title }}</h1>
+        <h1 :class="{ 'sr-only': hideTitle }">{{ title }}</h1>
         <div class="c-page-content">
             <blox-item
                 v-for="item in items"
@@ -24,8 +24,8 @@ export default {
         },
         hideTitle: {
             type: Boolean,
-            default: false
-        }
+            default: false,
+        },
     },
 };
 </script>
