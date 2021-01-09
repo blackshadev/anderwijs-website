@@ -20,11 +20,19 @@
             <nuxt-link
                 class="c-navigation-item__page-link"
                 :to="navItem.page"
+                @focus.native="focusMenuItem(true)"
+                @blur.native="focusMenuItem(false)"
                 >{{ navItem.title }}</nuxt-link
             >
         </template>
         <template v-if="navItem.type === 'externalLink'">
-            <a target="_blank" :href="navItem.href">{{ navItem.title }}</a>
+            <a
+                target="_blank"
+                :href="navItem.href"
+                @focus.native="focusMenuItem(true)"
+                @blur.native="focusMenuItem(false)"
+                >{{ navItem.title }}</a
+            >
         </template>
     </li>
 </template>
@@ -72,6 +80,11 @@ export default {
             return hasSubmenuItemWhichIsActive(this.navItem);
         },
     },
+    methods: {
+        focusMenuItem(focus) {
+            this.$el.parentElement.classList.toggle('focus', focus);
+        },
+    },
 };
 </script>
 
@@ -105,11 +118,12 @@ export default {
     }
 
     &__submenu {
-        @apply absolute hidden;
+        @apply sr-only;
     }
 
-    &:hover ul {
-        @apply block bg-white border border-t-0 border-gray-300;
+    &__submenu.focus,
+    &:hover &__submenu {
+        @apply not-sr-only absolute bg-white border border-t-0 border-gray-300;
     }
 }
 </style>
