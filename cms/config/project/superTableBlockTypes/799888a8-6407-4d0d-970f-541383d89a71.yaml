@@ -1,11 +1,11 @@
-field: f39cf5cb-d230-4911-992c-87eb47169ef5
+field: 8e6dd344-4212-4db1-889c-44e3237bc3b6
 fieldLayouts:
-  37481436-b95f-446f-b12a-a3a703b822b8:
+  6e28b16e-3546-4ba5-a2bc-aa1906864a67:
     tabs:
       -
         elements:
           -
-            fieldUid: 8dd82e1d-be73-4219-bc5f-245f7e7d9020
+            fieldUid: aedbfab4-1515-4136-aca3-095e30a40608
             instructions: null
             label: null
             required: true
@@ -14,10 +14,10 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: f9260a68-9ac0-46c0-909d-09e3359c093b
+            fieldUid: a86c69e3-7143-4b3d-8b6d-8a44f75242f7
             instructions: null
             label: null
-            required: false
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
@@ -25,49 +25,38 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  8dd82e1d-be73-4219-bc5f-245f7e7d9020:
+  a86c69e3-7143-4b3d-8b6d-8a44f75242f7:
     contentColumnType: string
     fieldGroup: null
-    handle: image
+    handle: ctaButtonPage
     instructions: ''
-    name: Afbeelding
+    name: 'Knop pagina'
     searchable: false
     settings:
       allowSelfRelations: false
-      allowUploads: true
-      allowedKinds:
-        - image
-      defaultUploadLocationSource: 'volume:e52f4539-f85a-4dd4-bbfc-91e2f58a1156'
-      defaultUploadLocationSubpath: 'page-content/{owner.slug}/'
       limit: '1'
       localizeRelations: false
-      previewMode: full
-      restrictFiles: '1'
       selectionLabel: ''
       showSiteMenu: true
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: false
-      singleUploadLocationSource: 'volume:e52f4539-f85a-4dd4-bbfc-91e2f58a1156'
-      singleUploadLocationSubpath: ''
       source: null
-      sources: '*'
+      sources:
+        - 'section:f895892f-96de-4c63-bd64-0052e23035c5'
       targetSiteId: null
-      useSingleFolder: false
       validateRelatedElements: false
-      viewMode: large
+      viewMode: null
     translationKeyFormat: null
     translationMethod: site
-    type: craft\fields\Assets
-  f9260a68-9ac0-46c0-909d-09e3359c093b:
-    contentColumnType: text
+    type: craft\fields\Entries
+  aedbfab4-1515-4136-aca3-095e30a40608:
+    contentColumnType: string(400)
     fieldGroup: null
-    handle: imageDescription
+    handle: ctaButtonTitle
     instructions: ''
-    name: Beschrijving
+    name: 'Knop titel'
     searchable: false
     settings:
       byteLimit: null
-      charLimit: null
+      charLimit: 100
       code: ''
       columnType: null
       initialRows: '4'
@@ -77,6 +66,3 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-handle: image
-name: Afbeelding
-sortOrder: 3

@@ -5,7 +5,8 @@
 export default {
     computed: {
         componentName() {
-            return 'blox-' + this.type.toLowerCase();
+            const type = this.type[0].toLocaleLowerCase() + this.type.substr(1);
+            return 'blox-' + type.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
         },
     },
     props: {

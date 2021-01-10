@@ -30,7 +30,7 @@ fields:
     fieldGroup: null
     handle: rowTitle
     instructions: ''
-    name: rowTitle
+    name: Titel
     searchable: false
     settings:
       byteLimit: null
@@ -49,7 +49,7 @@ fields:
     fieldGroup: null
     handle: rowDirection
     instructions: ''
-    name: rowDirection
+    name: Richting
     searchable: false
     settings:
       optgroups: true
@@ -80,5 +80,5 @@ fields:
     translationMethod: none
     type: craft\fields\Dropdown
 handle: row
-name: row
+name: Sectie
 sortOrder: 1

@@ -1,0 +1,163 @@
+field: f39cf5cb-d230-4911-992c-87eb47169ef5
+fieldLayouts:
+  70f851f7-70d2-4e4e-bbb4-4ea0cdd845dc:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: affe6d3d-23eb-4265-a604-d7f4e5ba1907
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 5f716b87-64ed-4018-ae13-95af820e1a8d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 6d631075-cb93-4b3f-9522-037d484979f8
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 8e6dd344-4212-4db1-889c-44e3237bc3b6
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  5f716b87-64ed-4018-ae13-95af820e1a8d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: ctaSubtitle
+    instructions: ''
+    name: Subtitel
+    searchable: false
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showHtmlButtonForNonAdmins: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  6d631075-cb93-4b3f-9522-037d484979f8:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: ''
+    name: Afbeelding
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:e52f4539-f85a-4dd4-bbfc-91e2f58a1156'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:e52f4539-f85a-4dd4-bbfc-91e2f58a1156'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  8e6dd344-4212-4db1-889c-44e3237bc3b6:
+    contentColumnType: string
+    fieldGroup: null
+    handle: ctaButtons
+    instructions: ''
+    name: Knoppen
+    searchable: false
+    settings:
+      columns:
+        __assoc__:
+          -
+            - aedbfab4-1515-4136-aca3-095e30a40608
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - a86c69e3-7143-4b3d-8b6d-8a44f75242f7
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_7_ctabuttons}}'
+      fieldLayout: matrix
+      maxRows: '3'
+      minRows: ''
+      placeholderKey: null
+      propagationMethod: all
+      selectionLabel: ''
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  affe6d3d-23eb-4265-a604-d7f4e5ba1907:
+    contentColumnType: text
+    fieldGroup: null
+    handle: ctaTitle
+    instructions: ''
+    name: Titel
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: callToAction
+name: 'Call To Action'
+sortOrder: 4

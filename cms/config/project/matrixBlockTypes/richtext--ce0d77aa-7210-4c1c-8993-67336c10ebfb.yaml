@@ -45,5 +45,5 @@ fields:
     translationMethod: none
     type: craft\redactor\Field
 handle: richtext
-name: text
+name: Tekst
 sortOrder: 2

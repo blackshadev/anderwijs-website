@@ -76,6 +76,10 @@ h1 {
 h2 {
     @apply font-bold text-xl;
 }
+
+h3 {
+    @apply font-bold text-lg;
+}
 </style>
 <script>
 import SocialIcons from '@/components/footer/social-icons';

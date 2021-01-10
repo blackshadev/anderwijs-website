@@ -1,4 +1,4 @@
-dateModified: 1610220247
+dateModified: 1610281729
 email:
   fromEmail: ranonkeltje@anderwijs.nl
   fromName: anderwijs.nl
@@ -12,6 +12,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.2.1
 system:
   edition: solo
   live: true
