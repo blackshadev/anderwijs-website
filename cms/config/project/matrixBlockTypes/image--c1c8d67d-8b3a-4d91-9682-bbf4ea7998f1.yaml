@@ -13,6 +13,15 @@ fieldLayouts:
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 100
+          -
+            fieldUid: f9260a68-9ac0-46c0-909d-09e3359c093b
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
         name: Content
         sortOrder: 1
 fields:
@@ -30,7 +39,7 @@ fields:
         - image
       defaultUploadLocationSource: 'volume:e52f4539-f85a-4dd4-bbfc-91e2f58a1156'
       defaultUploadLocationSubpath: 'page-content/{owner.slug}/'
-      limit: ''
+      limit: '1'
       localizeRelations: false
       previewMode: full
       restrictFiles: '1'
@@ -49,6 +58,25 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  f9260a68-9ac0-46c0-909d-09e3359c093b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: imageDescription
+    instructions: ''
+    name: Beschrijving
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
 handle: image
 name: Image
 sortOrder: 3
