@@ -4,7 +4,8 @@
         <div class="c-call-to-action__content">
             <div class="c-call-to-action__text">
                 <h2 class="c-call-to-action__title">{{ title }}</h2>
-                <p class="c-call-to-action__sub-title" v-if="subTitle" v-html="subTitle"></p>
+                <p class="c-call-to-action__sub-title" v-if="subTitle" v-html="subTitle
+"></p>
             </div>
             <div class="c-call-to-action__buttons">
                 <NuxtLink
