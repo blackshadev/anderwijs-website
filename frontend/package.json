@@ -16,7 +16,8 @@
     "@nuxtjs/google-fonts": "^1.2.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "vue-tweet-embed": "^2.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
