@@ -1,6 +1,6 @@
 <template>
     <Timeline
-        id="twitterdev"
+        :id="handle"
         sourceType="profile"
         :options="{ tweetLimit: limit }"
     />
