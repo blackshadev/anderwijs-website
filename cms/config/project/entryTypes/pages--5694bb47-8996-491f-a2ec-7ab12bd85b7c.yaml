@@ -27,6 +27,24 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            fieldUid: 99f72d43-bdc5-41e2-b216-a1bff438bdae
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: cdd229a2-6678-45e1-9780-d0e7805bc37d
+            instructions: 'korte omschrijving over de pagina. Gebruikt door zoek machine'
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
             fieldUid: 244091a2-ea5c-467c-8eee-efac207f2cf2
             instructions: null
             label: null

@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: c3821049-5636-431c-b1ac-7edf5a190b0f
+handle: description
+instructions: ''
+name: Omschrijving
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

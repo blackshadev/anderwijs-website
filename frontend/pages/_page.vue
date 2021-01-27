@@ -13,5 +13,23 @@ export default {
             page,
         };
     },
+    computed: {
+        pageTitle() {
+            const pageTitle = this.page.pageTitle ?? this.page.title;
+            return pageTitle + ' | Anderwijs';
+        },
+    },
+    head() {
+        return {
+            title: this.pageTitle,
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: this.page.description,
+                }
+            ]
+        };
+    },
 };
 </script>

@@ -53,6 +53,8 @@ return [
                     return [
                         'title' => $entry->title,
                         'showTitle' => $entry->showTitle,
+                        'pageTitle' => $entry->pageTitle,
+                        'description' => $entry->description,
                         'slug' => $entry->slug,
                         'content' => $blockMapper->map($entry->pageContent)
                     ];
