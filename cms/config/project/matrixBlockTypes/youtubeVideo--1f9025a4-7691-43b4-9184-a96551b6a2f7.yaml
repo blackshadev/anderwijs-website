@@ -1,0 +1,40 @@
+field: f39cf5cb-d230-4911-992c-87eb47169ef5
+fieldLayouts:
+  633d7768-b09a-4ebd-b42c-ace6541ecfca:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: a0351fcc-6a88-42df-b070-3db202f054d6
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  a0351fcc-6a88-42df-b070-3db202f054d6:
+    contentColumnType: text
+    fieldGroup: null
+    handle: youtubeVideoId
+    instructions: 'In de URL van een youtube video (stel https://www.youtube.com/watch?v=YMDJA4UvXLA) zit een stukje die de video uniek identificeert. In het voorbeeld geval: YMDJA4UvXLA .'
+    name: 'Youtube Video ID'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: youtubeVideo
+name: 'Youtube Video'
+sortOrder: 5

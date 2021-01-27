@@ -7,14 +7,13 @@ use Blox\Result\ArrayResult;
 use Blox\Result\ResultInterface;
 use craft\elements\MatrixBlock;
 
-class Twitter extends Block
+class YoutubeVideo extends Block
 {
     public function map(MatrixBlock $block): ResultInterface
     {
-        return ArrayResult::fromArray('TwitterFeed', [
+        return ArrayResult::fromArray('YoutubeVideo', [
             'id' => $block->id,
-            'handle' => $block->twitterHandle,
-            'limit' => $block->twitterLimit
+            'videoId' => $block->youtubeVideoId
         ]);
     }
 }
