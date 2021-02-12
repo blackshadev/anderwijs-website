@@ -65,7 +65,7 @@ FROM base as dev
 ARG USERID
 ARG GROUPID
 ARG OSTYPE
-USER root
+
 RUN apk -U --no-cache add \
     shadow \
     && sh -c 'if [ "${OSTYPE}" != "Darwin" ]; then usermod -u ${USERID} php; fi' \

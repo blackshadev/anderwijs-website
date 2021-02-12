@@ -1,4 +1,5 @@
 import {pagesAsURL} from "./dataproviders/page-index";
+import {eventsAsUrl} from "./dataproviders/aas-event";
 import {DataProviderContainer} from "./dataproviders/container";
 import axios from 'axios';
 
@@ -70,13 +71,19 @@ export default {
 
     sitemap: {
         hostname: 'https://anderwijs.nl',
-        routes() {
-            return dataProviderContainer.request(pagesAsURL);
+        async routes() {
+            return [
+                ...await dataProviderContainer.request(pagesAsURL),
+                ...await dataProviderContainer.request(eventsAsUrl),
+            ];
         }
     },
     generate: {
-        routes() {
-            return dataProviderContainer.request(pagesAsURL);
+        async routes() {
+            return [
+                ...await dataProviderContainer.request(pagesAsURL),
+                ...await dataProviderContainer.request(eventsAsUrl),
+            ];
         }
     },
     fontawesome: {

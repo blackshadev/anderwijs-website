@@ -5,9 +5,13 @@ import {AxiosResponse} from "axios"
 import {INavigation} from "~/types/navigation";
 import {ICraftElements} from "~/types/craft";
 import {IRoute} from "~/types/nuxtRoute";
+import {DataProviderContainer} from "~/dataproviders/container";
 
 type ApiResponse = ICraftElements<INavigation>;
-export default async function({ commit }: { commit: Commit }, { env, $axios, route }: { env: Env, $axios: NuxtAxiosInstance, route: IRoute }) {
+
+type InputArgs = { env: Env, $axios: NuxtAxiosInstance, route: IRoute, $dataprovider: DataProviderContainer  };
+
+export default async function({ commit }: { commit: Commit }, { env, $axios, route, $dataprovider }: InputArgs) {
   const naviation = await $axios.get<void, AxiosResponse<ApiResponse>>(`${env.CMS_URL}/navigation.json`);
   commit('navigation/set', naviation.data.data[0]);
   commit('navigation/setRoute', { name: route.name, params: route.params, path: route.path });
