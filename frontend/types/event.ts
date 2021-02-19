@@ -1,19 +1,52 @@
 interface IRawEvent {
-    id: number;
-    naam: string;
+    name: string;
     code: string;
-    voordag_text: string;
-    tijd_voordag: string;
-    datum_eind: string;
-    tijd_eind: string;
-    aantal_dagen: number;
-    kamphuis_naam: string;
-    kamphuis_adres: string;
-    kamphuis_postcode: string;
-    kamphuis_plaats: string;
-    kamphuis_telefoon: string;
-    kamphuis_website: string;
-    prijs: string;
-    beschrijving: string;
-    kleur: string;
+    description: string;
+    dates: {
+        preparation: string;
+        start: string;
+        end: string;
+    };
+    location: {
+        name: string;
+        address: string;
+        zipcode: string;
+        city: string
+        website: string;
+        phone: string;
+    };
+    pricing: {
+        type: 'NONE'|'UNKNOWN'|'KNOWN';
+        fullPrice: number|null;
+        discounts: {
+            [percentage: string]: number;
+        }
+    };
+}
+
+
+interface IEvent {
+    name: string;
+    code: string;
+    description: string;
+    dates: {
+        preparation: Date;
+        start: Date;
+        end: Date;
+    };
+    location: {
+        name: string;
+        address: string;
+        zipcode: string;
+        city: string
+        website: string;
+        phone: string;
+    };
+    pricing: {
+        type: 'NONE'|'UNKNOWN'|'KNOWN';
+        fullPrice: number|null;
+        discounts: {
+            [percentage: string]: number;
+        }
+    };
 }

@@ -1,8 +1,8 @@
 <template>
     <article class="c-event">
-        <img :src="image" :alt="title" />
+        <!-- <img :src="image" :alt="name" /> -->
         <div class="c-event__content">
-            <h1>{{ title }}</h1>
+            <h1>{{ name }}</h1>
             <dl>
                 <dt>Datum</dt>
                 <dd>{{ startDate }} t/m {{ endDate }}</dd>
@@ -14,12 +14,12 @@
                     {{ location.zipcode }}<br />
                     {{ location.city }}<br />
                     {{ location.phone }}<br />
-                    {{ location.site }}<br />
+                    {{ location.website }}<br />
                 </dd>
 
-                <dt v-if="price">Prijs</dt>
-                <dd v-if="price">
-                    {{ price }}
+                <dt v-if="hasPricing">Prijs</dt>
+                <dd v-if="hasPricing">
+                    {{ pricing }}
                 </dd>
             </dl>
             <p class="c-event__description">{{ description }}</p>
@@ -29,30 +29,33 @@
 
 <script>
 import { event as eventProvider } from '~/dataproviders/aas-event';
+import dayjs from 'dayjs';
+
+const DATE_FORMAT = 'DD-MM-YYYY HH:mm';
 
 export default {
     async asyncData({ params, $dataprovider }) {
         const event = await $dataprovider.request(eventProvider, params.code);
 
-        return {
-            title: event.naam,
-            image: 'https://www.anderwijs.nl/wp-content/uploads/frontpage-images-original/bijles-1.png',
-            description: event.beschrijving,
-            preparationDate: `${event.datum_voordag} ${event.tijd_voordag}`,
-            startDate: `${event.datum_start} ${event.tijd_start}`,
-            endDate: `${event.datum_eind} ${event.tijd_eind}`,
-            price: event.prijs,
-            location: {
-                name: event.kamphuis_naam,
-                address: event.kamphuis_adres,
-                zipcode: event.kamphuis_postcode,
-                city: event.kamphuis_plaats,
-                phone: event.kamphuis_telefoon,
-                site: event.kamphuis_website
-            }
-        };
+        return event;
     },
-}
+    computed: {
+        hasPricing() {
+            return this.pricing.type !== 'none';
+        },
+        startDate() {
+            return dayjs(this.dates.start).format(DATE_FORMAT);
+        },
+        endDate() {
+            return dayjs(this.dates.end).format(DATE_FORMAT);
+        },
+        preparationDate() {
+            return this.dates.preparation !== undefined
+                ? dayjs(this.dates.preparation).format(DATE_FORMAT)
+                : undefined;
+        },
+    },
+};
 </script>
 
 <style lang="scss" scoped>
